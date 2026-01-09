@@ -48,19 +48,6 @@ git clone https://github.com/akomis-e/config ~/repos/akomis-e/config
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 
-### --- --- --- --- --- --- --- --- --- --- ---
-### changing loging/display manager to: lemurs
-sudo systemctl disable lightdm.service
-sudo systemctl enable lemurs.service
-cat << EOF | sudo tee /etc/lemurs/wayland/sway 
-#! /bin/sh
-exec sway
-EOF
-sudo chmod 755 /etc/lemurs/wayland/sway
-sudo mv /etc/lemurs/config.toml /etc/lemurs/config.toml.backup
-sudo cp 
-### --- --- --- --- --- --- --- --- --- --- ---
-
 
 ### --- --- --- --- --- --- --- --- --- --- ---
 ### common apps
@@ -105,6 +92,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 ### setting .config files
 ln -s ~/repos/akomis-e/config 		~/scripts
 ln -s ~/.config 					~/config
+ln -s ~/scripts/home/bin/			~/
 mkdir -p \
 	~/bin \
 	~/Music/ \
@@ -123,7 +111,6 @@ mv ~/.zsh*  				~/.config/zsh/
 mv ~/.oh-my-zsh*  			~/.config/oh-my-zsh/
 rm ~/.config/zsh/.zshrc
 
-ln ~/scripts/home/bin/*									~/bin/
 ln ~/scripts/home/.zshenv 								~/
 ln ~/scripts/home/.config/zsh/.* 						~/.config/zsh/
 ln ~/scripts/home/.config/sway/* 						~/.config/sway/
@@ -140,6 +127,21 @@ rm ~/.config/nvim/init.lua
 ln ~/scripts/home/.config/nvim/init.lua					~/.config/nvim/init.lua
 ln ~/scripts/home/.config/nvim/lua/plugins/*			~/.config/nvim/lua/plugins/
 ### --- --- --- --- --- --- --- --- --- --- ---
+
+
+### --- --- --- --- --- --- --- --- --- --- ---
+### changing loging/display manager to: lemurs
+sudo systemctl disable lightdm.service
+sudo systemctl enable lemurs.service
+cat << EOF | sudo tee /etc/lemurs/wayland/sway 
+#! /bin/sh
+exec sway
+EOF
+sudo chmod 755 /etc/lemurs/wayland/sway
+sudo mv /etc/lemurs/config.toml 		/etc/lemurs/config.toml.backup
+sudo ln -s ~/scripts/etc/config.toml 	/etc/lemurs/config.toml
+### --- --- --- --- --- --- --- --- --- --- ---
+
 
 ### --- --- --- --- --- --- --- --- --- --- ---
 # TODO: setup hardware config in ~/.config/hardware
@@ -162,19 +164,21 @@ ln -s ~/Dropbox/hlib/music_pl 		~/Music/playlists
 
 ### --- --- --- --- --- --- --- --- --- --- ---
 ### Git config
+git config --global core.editor nvim
 git config --global user.email "greyakomis@gmail.com"
 git config --global user.name "akomis"
 
 git config --global alias.pullff pull --ff
 git config --global alias.co     checkout
-git config --global alias.cod    !git checkout origin/develop && git branch -f develop && git checkout develop
-git config --global alias.com    !git checkout origin/master && git branch -f master && git checkout master
-git config --global alias.coma   !git checkout origin/main && git branch -f main && git checkout main
-git config --global alias.loga   "log --oneline --graph --pretty=format:\"%C(#774477)%h %C(#555555)%ar %C(#aaaaaa)%s %C(auto)%d%C(#555555)/ %an\""
-git config --global alias.logg   "log -n 20 --oneline --pretty=format:\"%C(#774477)%h %C(#555555)%ar %C(#aaaaaa)%s %C(auto)%d%C(#555555)/ %an\""
 git config --global alias.dc     diff --cached
 git config --global alias.cob    checkout -b
-git config --global alias.ba     branch -adiffc = diff --cached
+git config --global alias.ba     branch -a
+git config --global alias.diffc  diff --cached
+git config --global alias.logg   '!git log --oneline --pretty=format:'"'"'%C(#774477)%h %C(#555555)%ar %C(#aaaaaa)%s %C(auto)%d%C(#555555)/ %an'"'"''
+git config --global alias.cod    '!git checkout origin/develop && git branch -f develop && git checkout develop'
+git config --global alias.com    '!git checkout origin/master && git branch -f master && git checkout master'
+git config --global alias.coma   '!git checkout origin/main && git branch -f main && git checkout main'
+# git config --global alias.loga   "log --oneline --graph --pretty=format:\"%C(#774477)%h %C(#555555)%ar %C(#aaaaaa)%s %C(auto)%d%C(#555555)/ %an\""
 ### --- --- --- --- --- --- --- --- --- --- ---
 
 

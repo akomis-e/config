@@ -14,7 +14,12 @@ alias gits="git status"
 
 
 alias p="print"
-alias sshag="eval $(ssh-agent)"
+alias vi="nvim"
+
+function sshag(){
+	eval $(ssh-agent)
+	ssh-add ~/.ssh/id_rsa
+}
 
 ## Batman
 export BAT_THEME=gruvbox-dark

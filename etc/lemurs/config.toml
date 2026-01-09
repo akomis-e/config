@@ -13,7 +13,7 @@ shell_login_flag = "short"
 focus_behaviour = "default"
 
 [background]
-show_background = false
+show_background = true
 
 [background.style]
 color = "#504945"
@@ -78,11 +78,11 @@ show_title = true
 title = "Login"
 title_color = "white"
 content_color = "white"
-title_color_focused = "orange"
-content_color_focused = "orange"
+title_color_focused = "#fabd2f"
+content_color_focused = "#fabd2f"
 show_border = true
 border_color = "white"
-border_color_focused = "orange"
+border_color_focused = "#fabd2f"
 use_max_width = true
 max_width = 48
 
@@ -94,11 +94,11 @@ show_title = true
 title = "Password"
 title_color = "white"
 content_color = "white"
-title_color_focused = "orange"
-content_color_focused = "orange"
+title_color_focused = "#fabd2f"
+content_color_focused = "#fabd2f"
 show_border = true
 border_color = "white"
-border_color_focused = "orange"
+border_color_focused = "#fabd2f"
 use_max_width = true
 max_width = 48
 
